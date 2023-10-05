@@ -1,0 +1,94 @@
+:root {
+    --sidebg: #85b3b8;
+    --mainbg: #e8e8e5;
+}
+
+body {
+    background-color: var(--mainbg);
+    margin: 0px;
+}
+
+.container {
+    background-color: var(--mainbg);
+    height: 100vh;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1.4fr 1.3fr 1.3fr;
+    grid-template-areas:    /* define grid layout */
+    "sidebar blog blog papers papers"
+    "sidebar blog blog papers papers"
+    "sidebar image image image image"
+    "sidebar image image image image"
+    ;
+}
+
+#sidebar {
+    background-color: var(--sidebg);
+    grid-area: sidebar;
+    padding: 3%;
+    overflow-y: auto;
+}
+#sidebar img {
+    width: 80%;
+    margin: auto;
+    display: block;
+}
+#blog {
+    grid-area: blog;
+    overflow-y: auto;
+    font-size: large;
+}
+#papers {
+    grid-area: papers;
+    overflow-y: auto;
+    font-size: large;
+}
+#image {
+    grid-area: image;
+    font-size: large;
+}
+#imagescroll {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#imagescroll img {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        gap: 0.5rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 1.5fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        "sidebar"
+        "blog"
+        "papers"
+        "image"
+        ;
+    }
+    
+    #sidebar {
+        height: 22vh;
+        width: 90vw;
+    }
+    #sidebar img {
+        display: none;
+    }
+    #blog, #papers {
+        height: 30vh;
+        margin: 1%;
+    }
+    #image {
+        width: 90vw;
+    }
+    #imagescroll {
+        height: 35vh;
+        width: 95vw;
+    }
+}
